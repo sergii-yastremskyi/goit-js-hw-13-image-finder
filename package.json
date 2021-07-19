@@ -3,10 +3,10 @@
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://sergii-yastremskyi.github.io/goit-js-hw-13-iamge-finder",
+  "homepage": "https://sergii-yastremskyi.github.io/goit-js-hw-13-image-finder/",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /goit-js-hw-13-iamge-finder"
+    "build": "parcel build src/*.html --public-url /goit-js-hw-13-image-finder/"
   },
   "repository": {
     "type": "git",
