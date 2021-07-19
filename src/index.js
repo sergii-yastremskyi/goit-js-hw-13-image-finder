@@ -1,5 +1,8 @@
 import './sass/main.scss';
-
+import '@pnotify/core/dist/BrightTheme.css';
+ import { error } from '@pnotify/core';
+//   import * as PNotifyMobile from 'node_modules/@pnotify/mobile/dist/PNotifyMobile.js';
+  
 const refs = {
     input: document.querySelector("#search-form > input[type=text]"),
     form: document.querySelector("#search-form"),
@@ -27,11 +30,11 @@ class GalleryApp {
     }
   
     setSearchValue(val) {
-        
+        refs.gallery.innerHTML = '';
         this.searchValue = val;
         this.pageNumber = 1;
         if (val === '') {
-            refs.gallery.innerHTML = '';
+            
             refs.loadMO.classList.add('hidden');
         }
         else {
@@ -44,8 +47,18 @@ class GalleryApp {
         fetch(`https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${this.searchValue}&page=${this.pageNumber}&per_page=12&key=22553611-d17142b90db34a0c793ad1fbe`)
             .then(res => res.json())
             .then(data => {
-                
-                this.renderGallery(data.hits);
+                if (data.hits.length > 0)
+                {
+                    this.renderGallery(data.hits);
+                }
+                else {
+                   
+
+                    error({
+                        text: 'Notice me, senpai!'
+                    });
+                }
+
             })
             .catch(error => console.log(error));
         
@@ -72,12 +85,12 @@ class GalleryApp {
         container.appendChild(innercontainer);
         refs.gallery.appendChild(container);
 
-        setTimeout(() => {
+        
             refs.loadMO.scrollIntoView({
                 behavior: 'smooth',
                 block: 'end',
             })
-        }, 500);
+       
         
     }
     renderGallery(itemsarray) {
@@ -103,5 +116,6 @@ refs.loadMO.addEventListener('click', (e) => {
     e.preventDefault();
     myGallery.increasePagenumber();
 });
+
 
 
