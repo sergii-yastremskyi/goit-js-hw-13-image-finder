@@ -71,6 +71,14 @@ class GalleryApp {
         console.log(container);
         container.appendChild(innercontainer);
         refs.gallery.appendChild(container);
+
+        setTimeout(() => {
+            refs.loadMO.scrollIntoView({
+                behavior: 'smooth',
+                block: 'end',
+            })
+        }, 500);
+        
     }
     renderGallery(itemsarray) {
         itemsarray.map(item => this.renderCard(item));
