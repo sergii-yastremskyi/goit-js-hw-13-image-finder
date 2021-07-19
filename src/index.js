@@ -55,7 +55,7 @@ class GalleryApp {
                    
 
                     error({
-                        text: 'Notice me, senpai!'
+                        text: 'no images found!'
                     });
                 }
 
